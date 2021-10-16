@@ -48,7 +48,7 @@ fn with_timer1<T>(f: &dyn Fn(&mut Timer<TIMER1>) -> T) -> T {
 
 
 #[export_name = "TIMER1"]
-fn foo() {
+fn timer_1_interrupt() {
     interrupt::free(|_| {
         let val_text = heapless::String::<32>::from(unsafe {COUNTER} );
         with_lcd_and_style(&|lcd, style| Text::new(&val_text, Point::new(40, 35), style)
